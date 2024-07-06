@@ -6,6 +6,9 @@ from streamlit_echarts import st_echarts
 file_path = 'Salary_Data.csv'
 data = pd.read_csv(file_path)
 
+# Limpiar datos: eliminar filas con valores NaN
+data = data.dropna()
+
 st.title('Análisis de Datos de Salarios')
 
 # Mostrar datos
@@ -26,7 +29,7 @@ gender_options = {
     "tooltip": {"trigger": "item"},
     "series": [{
         "type": "pie",
-        "radius": "50%",
+        "radius": "60%",
         "data": [{"value": v, "name": k} for k, v in gender_counts.items()],
     }]
 }
@@ -39,7 +42,7 @@ education_options = {
     "tooltip": {"trigger": "item"},
     "series": [{
         "type": "pie",
-        "radius": "50%",
+        "radius": "60%",
         "data": [{"value": v, "name": k} for k, v in education_counts.items()],
     }]
 }
@@ -92,14 +95,6 @@ st_echarts(experience_education_options)
 
 # Otros componentes interactivos
 st.subheader('Interacción Adicional')
-if st.button('Actualizar Datos'):
-    st.write('Datos actualizados!')
-
-selected_gender = st.radio('Selecciona Género:', ['Todos'] + list(data['Gender'].unique()))
-if selected_gender != 'Todos':
-    filtered_data = data[data['Gender'] == selected_gender]
-    st.write(f'Mostrando datos para {selected_gender}')
-    st.write(filtered_data)
 
 selected_education = st.selectbox('Selecciona Nivel de Educación', ['Todos'] + list(data['Education Level'].unique()))
 if selected_education != 'Todos':
@@ -107,9 +102,9 @@ if selected_education != 'Todos':
     st.write(f'Mostrando datos para {selected_education}')
     st.write(filtered_data)
 
-age_range = st.slider('Rango de Edad', min_value=int(data['Age'].min()), max_value=int(data['Age'].max()), value=(int(data['Age'].min()), int(data['Age'].max())))
-filtered_data = data[(data['Age'] >= age_range[0]) & (data['Age'] <= age_range[1])]
-st.write(f'Mostrando datos para edades entre {age_range[0]} y {age_range[1]}')
+experience_range = st.slider('Rango de Años de Experiencia', min_value=int(data['Years of Experience'].min()), max_value=int(data['Years of Experience'].max()), value=(int(data['Years of Experience'].min()), int(data['Years of Experience'].max())))
+filtered_data = data[(data['Years of Experience'] >= experience_range[0]) & (data['Years of Experience'] <= experience_range[1])]
+st.write(f'Mostrando datos para años de experiencia entre {experience_range[0]} y {experience_range[1]}')
 st.write(filtered_data)
 
 # Descargar datos filtrados
