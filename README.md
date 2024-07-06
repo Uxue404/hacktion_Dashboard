@@ -5,6 +5,13 @@
 
 
 ## Problema especifico
+
+La gestión de cambios y la evaluación de riesgos en proyectos a menudo se ven obstaculizadas por la falta de datos precisos y actualizados sobre los factores clave que influyen en el éxito de los proyectos. Específicamente, en la gestión de recursos humanos, la falta de un sistema estructurado para analizar y estimar salarios puede llevar a desigualdades salariales, alta rotación de personal y una planificación de recursos ineficiente.
+
+## Necesidad general
+
+Crear un sistema que no solo permita la estimación de salarios basados en experiencia, puesto y grado escolar, sino que también pueda adaptarse a otros ámbitos como el análisis de rendimiento de futbolistas para la negociación de contratos o la adecuación de entrenamientos, utilizando un dataset robusto y visualizaciones interactivas. Además, se integrará una API de inteligencia artificial (IA) como GPT para predecir casos específicos, como determinar rangos salariales basados en grados académicos y campos de especialización.
+
 ## Áreas de aplicación
 
 - Recursos Humanos:
@@ -17,13 +24,6 @@
     - Evaluación de riesgos.
     - Planificación de recursos.
     - Seguimiento del progreso del proyecto.
-
-
-La gestión de cambios y la evaluación de riesgos en proyectos a menudo se ven obstaculizadas por la falta de datos precisos y actualizados sobre los factores clave que influyen en el éxito de los proyectos. Específicamente, en la gestión de recursos humanos, la falta de un sistema estructurado para analizar y estimar salarios puede llevar a desigualdades salariales, alta rotación de personal y una planificación de recursos ineficiente.
-
-## Necesidad general
-
-Crear un sistema que no solo permita la estimación de salarios basados en experiencia, puesto y grado escolar, sino que también pueda adaptarse a otros ámbitos como el análisis de rendimiento de futbolistas para la negociación de contratos o la adecuación de entrenamientos, utilizando un dataset robusto y visualizaciones interactivas. Además, se integrará una API de inteligencia artificial (IA) como GPT para predecir casos específicos, como determinar rangos salariales basados en grados académicos y campos de especialización.
 
 ## Descripción del problema y solución
 
@@ -63,4 +63,3 @@ Desarrollar un sistema interactivo y visual de análisis de datos utilizando Str
 
 ## Conclusion
 Esta solución no solo mejorará la gestión de cambios y la evaluación de riesgos en proyectos, sino que también proporcionará una herramienta valiosa para la toma de decisiones basada en datos en diversas áreas.
-## Problema especifico
