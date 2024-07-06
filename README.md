@@ -8,7 +8,7 @@
 
 La gestión de cambios y la evaluación de riesgos en proyectos a menudo se ven obstaculizadas por la falta de datos precisos y actualizados sobre los factores clave que influyen en el éxito de los proyectos. Específicamente, en la gestión de recursos humanos, la falta de un sistema estructurado para analizar y estimar salarios puede llevar a desigualdades salariales, alta rotación de personal y una planificación de recursos ineficiente.
 
-## Necesidad general
+## Objetivo
 
 
 Resumen del Objetivo del Proyecto
