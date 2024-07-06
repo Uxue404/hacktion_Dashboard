@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
+from streamlit_echarts import st_echarts
 
 # Cargar datos
 file_path = 'Salary_Data.csv'
@@ -9,9 +8,9 @@ data = pd.read_csv(file_path)
 
 st.title('Análisis de Datos de Salarios')
 
-# Mostrar datos con data editor
+# Mostrar datos
 st.subheader('Datos')
-st.data_editor('Edita los datos aquí:', data)
+st.write(data)
 
 # Filtros interactivos
 st.sidebar.subheader('Filtros')
@@ -22,33 +21,74 @@ filtered_data = data[(data['Gender'].isin(gender_filter)) & (data['Education Lev
 
 # Visualización del Género
 st.subheader('Distribución por Género')
-fig, ax = plt.subplots()
-sns.countplot(data=filtered_data, x='Gender', ax=ax)
-st.pyplot(fig)
+gender_counts = filtered_data['Gender'].value_counts().to_dict()
+gender_options = {
+    "tooltip": {"trigger": "item"},
+    "series": [{
+        "type": "pie",
+        "radius": "50%",
+        "data": [{"value": v, "name": k} for k, v in gender_counts.items()],
+    }]
+}
+st_echarts(gender_options)
 
 # Visualización del Nivel de Educación
 st.subheader('Distribución por Nivel de Educación')
-fig, ax = plt.subplots()
-sns.countplot(data=filtered_data, x='Education Level', ax=ax)
-st.pyplot(fig)
+education_counts = filtered_data['Education Level'].value_counts().to_dict()
+education_options = {
+    "tooltip": {"trigger": "item"},
+    "series": [{
+        "type": "pie",
+        "radius": "50%",
+        "data": [{"value": v, "name": k} for k, v in education_counts.items()],
+    }]
+}
+st_echarts(education_options)
 
 # Comparativa de Salario y Años de Experiencia por Género
 st.subheader('Salario vs Años de Experiencia por Género')
-fig, ax = plt.subplots()
-sns.scatterplot(data=filtered_data, x='Years of Experience', y='Salary', hue='Gender', ax=ax)
-st.pyplot(fig)
+salary_experience_options = {
+    "xAxis": {"type": "category", "data": filtered_data['Years of Experience'].tolist()},
+    "yAxis": {"type": "value"},
+    "series": [
+        {
+            "data": filtered_data['Salary'].tolist(),
+            "type": "scatter",
+        }
+    ],
+    "tooltip": {"trigger": "axis"},
+}
+st_echarts(salary_experience_options)
 
 # Comparativa de Salario por Nivel de Educación
 st.subheader('Salario por Nivel de Educación')
-fig, ax = plt.subplots()
-sns.boxplot(data=filtered_data, x='Education Level', y='Salary', ax=ax)
-st.pyplot(fig)
+salary_education_options = {
+    "xAxis": {"type": "category", "data": filtered_data['Education Level'].unique().tolist()},
+    "yAxis": {"type": "value"},
+    "series": [
+        {
+            "data": filtered_data.groupby('Education Level')['Salary'].mean().tolist(),
+            "type": "bar",
+        }
+    ],
+    "tooltip": {"trigger": "axis"},
+}
+st_echarts(salary_education_options)
 
 # Comparativa de Años de Experiencia por Nivel de Educación
 st.subheader('Años de Experiencia por Nivel de Educación')
-fig, ax = plt.subplots()
-sns.boxplot(data=filtered_data, x='Education Level', y='Years of Experience', ax=ax)
-st.pyplot(fig)
+experience_education_options = {
+    "xAxis": {"type": "category", "data": filtered_data['Education Level'].unique().tolist()},
+    "yAxis": {"type": "value"},
+    "series": [
+        {
+            "data": filtered_data.groupby('Education Level')['Years of Experience'].mean().tolist(),
+            "type": "bar",
+        }
+    ],
+    "tooltip": {"trigger": "axis"},
+}
+st_echarts(experience_education_options)
 
 # Otros componentes interactivos
 st.subheader('Interacción Adicional')
@@ -74,9 +114,3 @@ st.write(filtered_data)
 
 # Descargar datos filtrados
 st.download_button('Descargar Datos Filtrados', filtered_data.to_csv(index=False).encode('utf-8'), file_name='filtered_data.csv', mime='text/csv')
-
-# Color Picker
-st.color_picker('Elige un color para la aplicación')
-
-# Mostrar entrada de texto
-st.text_input('Introduce algún texto aquí')
