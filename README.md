@@ -10,9 +10,13 @@ La gestión de cambios y la evaluación de riesgos en proyectos a menudo se ven 
 
 ## Necesidad general
 
-Crear un sistema que no solo permita la estimación de salarios basados en experiencia, puesto y grado escolar, sino que también pueda adaptarse a otros ámbitos como el análisis de rendimiento de futbolistas para la negociación de contratos o la adecuación de entrenamientos, utilizando un dataset robusto y visualizaciones interactivas. Además, se integrará una API de inteligencia artificial (IA) como GPT para predecir casos específicos, como determinar rangos salariales basados en grados académicos y campos de especialización.
+
+Resumen del Objetivo del Proyecto
+Desarrollar un sistema interactivo y visual de análisis de datos, utilizando Streamlit, para gestionar cambios y evaluar riesgos en proyectos. El sistema incluirá un datasheet de salarios que permita estimar sueldos basados en experiencia, puesto y grado escolar. Además, integrará una API de inteligencia artificial, como GPT, para predecir casos específicos y ofrecer recomendaciones basadas en los datos, mejorando la toma de decisiones y la mitigación de riesgos en diversas áreas.
 
 ## Áreas de aplicación
+
+Crear un sistema que no solo permita la estimación de salarios basados en experiencia, puesto y grado escolar, sino que también pueda adaptarse a otros ámbitos como el análisis de rendimiento de futbolistas para la negociación de contratos o la adecuación de entrenamientos, utilizando un dataset robusto y visualizaciones interactivas. Además, se integrará una API de inteligencia artificial (IA) como GPT para predecir casos específicos, como determinar rangos salariales basados en grados académicos y campos de especialización.
 
 - Recursos Humanos:
     - Estimación de salarios.
